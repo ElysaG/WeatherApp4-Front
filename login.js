@@ -10,21 +10,17 @@ registerBtn.addEventListener("click", async () => {
     password: document.getElementById("registerPassword").value,
   };
 
-  try {
-    const res = fetch("https://weather-app4-back-ten.vercel.app/users/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
-    });
-    const data = await res.json();
+  const res = fetch("https://weather-app4-back-ten.vercel.app/users/signup", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user),
+  });
+  const data = await res.json();
 
-    console.log(data, "données envoyées");
-    //le data.result sera true ou false
-    if (data.result) {
-      window.location.assign("index.html"); //on renvoie sur index.html
-    }
-  } catch (err) {
-    console.log("erreur catchée POST Signup", err);
+  console.log(data, "données envoyées");
+  //le data.result sera true ou false
+  if (data.result) {
+    window.location.assign("index.html"); //on renvoie sur index.html
   }
 });
 
