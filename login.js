@@ -10,7 +10,7 @@ registerBtn.addEventListener("click", () => {
     password: document.getElementById("registerPassword").value,
   };
 
-  fetch("http://localhost:3000/users/signup", {
+  fetch("https://weather-app4-back-ten.vercel.app/users/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(user),
@@ -35,7 +35,7 @@ connectionBtn.addEventListener("click", () => {
     password: document.getElementById("connectionPassword").value,
   };
 
-  fetch("http://localhost:3000/users/signin", {
+  fetch("https://weather-app4-back-ten.vercel.app/users/signin", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(user),
