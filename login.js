@@ -22,8 +22,6 @@ registerBtn.addEventListener("click", async () => {
     //le data.result sera true ou false
     if (data.result) {
       window.location.assign("index.html"); //on renvoie sur index.html
-    } else {
-      alert("Erreur : " + data.error); //on renvoie le message error du back
     }
   } catch (err) {
     console.log("erreur catchée POST Signup", err);
@@ -48,9 +46,5 @@ connectionBtn.addEventListener("click", () => {
       if (data.result) {
         window.location.assign("index.html");
       }
-      // else {
-      //   alert("Erreur : " + data.error); //on renvoie le message error du back
-      // }
-    })
-    .catch((err) => console.log("erreur catchée POST Signin", err));
+    });
 });
