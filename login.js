@@ -1,10 +1,11 @@
 // Insert your code here
 const registerBtn = document.getElementById("register");
 const connectionBtn = document.getElementById("connection");
+console.log(connectionBtn);
 
 // Inscription
 registerBtn.addEventListener("click", async () => {
-  console.log("click inscription button");
+  // console.log("click inscription button");
   const user = {
     name: document.getElementById("registerName").value,
     email: document.getElementById("registerEmail").value,
@@ -21,7 +22,7 @@ registerBtn.addEventListener("click", async () => {
   );
   const data = await res.json();
 
-  console.log(data, "données envoyées");
+  // console.log(data, "données envoyées");
   //le data.result sera true ou false
   if (data.result) {
     window.location.assign("index.html"); //on renvoie sur index.html
@@ -30,7 +31,7 @@ registerBtn.addEventListener("click", async () => {
 
 // Connection
 connectionBtn.addEventListener("click", () => {
-  console.log("click connection button");
+  // console.log("click connection button");
 
   const user = {
     email: document.getElementById("connectionEmail").value,
@@ -45,7 +46,7 @@ connectionBtn.addEventListener("click", () => {
     .then((res) => res.json())
     .then((data) => {
       // /le data.result sera true ou false
-      console.log(data);
+      // console.log(data);
 
       if (data.result) {
         window.location.assign("index.html");
