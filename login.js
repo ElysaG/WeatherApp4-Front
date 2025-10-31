@@ -3,29 +3,31 @@ const registerBtn = document.getElementById("register");
 const connectionBtn = document.getElementById("connection");
 
 // Inscription
-registerBtn.addEventListener("click", () => {
+registerBtn.addEventListener("click", async () => {
   const user = {
     name: document.getElementById("registerName").value,
     email: document.getElementById("registerEmail").value,
     password: document.getElementById("registerPassword").value,
   };
 
-  fetch("https://weather-app4-back-ten.vercel.app/users/signup", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(user),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data, "données envoyées");
-      //le data.result sera true ou false
-      if (data.result) {
-        window.location.assign("index.html"); //on renvoie sur index.html
-      } else {
-        alert("Erreur : " + data.error); //on renvoie le message error du back
-      }
-    })
-    .cath((err) => console.log("erreur catchée POST Signup", err));
+  try {
+    const res = fetch("https://weather-app4-back-ten.vercel.app/users/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    });
+    const data = await res.json();
+
+    console.log(data, "données envoyées");
+    //le data.result sera true ou false
+    if (data.result) {
+      window.location.assign("index.html"); //on renvoie sur index.html
+    } else {
+      alert("Erreur : " + data.error); //on renvoie le message error du back
+    }
+  } catch (err) {
+    console.log("erreur catchée POST Signup", err);
+  }
 });
 
 // Connection
@@ -45,9 +47,10 @@ connectionBtn.addEventListener("click", () => {
       // /le data.result sera true ou false
       if (data.result) {
         window.location.assign("index.html");
-      } else {
-        alert("Erreur : " + data.error); //on renvoie le message error du back
       }
+      // else {
+      //   alert("Erreur : " + data.error); //on renvoie le message error du back
+      // }
     })
-    .cath((err) => console.log("erreur catchée POST Signin", err));
+    .catch((err) => console.log("erreur catchée POST Signin", err));
 });
