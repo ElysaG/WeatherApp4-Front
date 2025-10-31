@@ -10,7 +10,7 @@ registerBtn.addEventListener("click", async () => {
     password: document.getElementById("registerPassword").value,
   };
 
-  const res = fetch("https://weather-app4-back-ten.vercel.app/users/signup", {
+  const res = await fetch("https://weather-app4-back-ten.vercel.app/users/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(user),
