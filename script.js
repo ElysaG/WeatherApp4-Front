@@ -1,9 +1,9 @@
-fetch('https://weather-app4-back-ten.vercel.app/weather')
-	.then(response => response.json())
-	.then(data => {
-		if (data.weather) {
-			for (let i = 0; i < data.weather.length; i++) {
-				document.querySelector('#cityList').innerHTML += `
+fetch("https://weather-app4-back-ten.vercel.app/weather")
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.weather) {
+      for (let i = 0; i < data.weather.length; i++) {
+        document.querySelector("#cityList").innerHTML += `
 				<div class="cityContainer">
 				<p class="name">${data.weather[i].cityName}</p>
 				<p class="description">${data.weather[i].description}</p>
@@ -16,36 +16,44 @@ fetch('https://weather-app4-back-ten.vercel.app/weather')
 				<button class="deleteCity" id="${data.weather[i].cityName}">Delete</button>
 			</div>
 			`;
-			}
-			updateDeleteCityEventListener();
-		}
-	});
+      }
+      updateDeleteCityEventListener();
+    }
+  });
 
 function updateDeleteCityEventListener() {
-	for (let i = 0; i < document.querySelectorAll('.deleteCity').length; i++) {
-		document.querySelectorAll('.deleteCity')[i].addEventListener('click', function () {
-			fetch(`https://weather-app4-back-ten.vercel.app/weather/${this.id}`, { method: 'DELETE' })
-				.then(response => response.json())
-				.then(data => {
-					if (data.result) {
-						this.parentNode.remove();
-					}
-				});
-		});
-	}
+  for (let i = 0; i < document.querySelectorAll(".deleteCity").length; i++) {
+    document
+      .querySelectorAll(".deleteCity")
+      [i].addEventListener("click", function () {
+        fetch(`https://weather-app4-back-ten.vercel.app/weather/${this.id}`, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.result) {
+              this.parentNode.remove();
+            }
+          });
+      });
+  }
 }
 
-document.querySelector('#addCity').addEventListener('click', function () {
-	const cityName = document.querySelector('#cityNameInput').value;
+document.querySelector("#addCity").addEventListener("click", function () {
+  const cityName = document.querySelector("#cityNameInput").value;
 
-	fetch('https://weather-app4-back-ten.vercel.app/weather', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({ cityName }),
-	}).then(response => response.json())
-		.then(data => {
-			if (data.result) {
-				document.querySelector('#cityList').innerHTML += `
+  fetch("https://weather-app4-back-ten.vercel.app/weather", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ cityName }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (!data.result) {
+        afficherAlerte(data.error);
+        return;
+      }
+      document.querySelector("#cityList").innerHTML += `
 			<div class="cityContainer">
 				<p class="name">${data.weather.cityName}</p>
 				<p class="description">${data.weather.description}</p>
@@ -58,9 +66,27 @@ document.querySelector('#addCity').addEventListener('click', function () {
 				<button class="deleteCity" id="${data.weather.cityName}">Delete</button>
 			</div>
 					`;
-				updateDeleteCityEventListener();
-				document.querySelector('#cityNameInput').value = '';
-			}
-
-		});
+      updateDeleteCityEventListener();
+      document.querySelector("#cityNameInput").value = "";
+    });
 });
+
+// Fonction message alerte 20 villes maxi
+function afficherAlerte(message) {
+  // Création de la div d'alerte
+  const alerte = document.createElement("div");
+  alerte.className = "alerte-message";
+  alerte.textContent = message;
+  document.body.appendChild(alerte);
+
+  // Animation d’apparition
+  setTimeout(() => {
+    alerte.classList.add("visible");
+  }, 10);
+
+  // Disparition au bout de 3 secondes
+  setTimeout(() => {
+    alerte.classList.remove("visible");
+    setTimeout(() => alerte.remove(), 300);
+  }, 3000);
+}
