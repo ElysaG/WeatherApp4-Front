@@ -68,8 +68,22 @@ document.querySelector("#addCity").addEventListener("click", function () {
 					`;
       updateDeleteCityEventListener();
       document.querySelector("#cityNameInput").value = "";
+
+      // Ajout du scroll automatique vers le bas
+      document.querySelector("#cityList").lastElementChild.scrollIntoView({
+        behavior: "smooth",
+      });
     });
 });
+
+// Entrée pour valider la recherche
+document
+  .querySelector("#cityNameInput")
+  .addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      document.querySelector("#addCity").click();
+    }
+  });
 
 // Fonction message alerte 20 villes maxi
 function afficherAlerte(message) {
