@@ -1,51 +1,49 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App - Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+  </head>
 
-  
-</head>
+  <body>
+    <header id="header">
+      <div class="headerDiv">
+        <img
+          id="logo"
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z'%3E%3C/path%3E%3C/svg%3E"
+          alt="Logo"
+        />
+        <h2>Weather Forecast</h2>
+      </div>
 
-<body>
-  <!-- <div id="header">
-    <a id="logoButton" href="./index.html">
-      <img id="logo" src="images/logo.svg" />
-    </a>
+      <div class="search-container">
+        <input
+          type="text"
+          id="cityNameInput"
+          placeholder="Search for a city..."
+        />
+        <button id="addCity">
+          <img
+            id="glass"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='5' x2='12' y2='19'%3E%3C/line%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E"
+            alt="Add"
+          />
+        </button>
+      </div>
 
-    <div class="headerDiv">
-      <input id="cityNameInput" type="text" placeholder="Add new city" />
-      <button id="addCity"><img id="glass" src="images/glass.png" /></button>
-    </div>
-
-    <a id="userButton" href="./login.html">
-      <img id="userIcon" src="images/user.png" />
-    </a>
-  </div> -->
-
-     <header id="header">
-        <div class="headerDiv">
-            <img id="logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z'%3E%3C/path%3E%3C/svg%3E" alt="Logo">
-            <h2>Weather Forecast</h2>
-        </div>
-        
-        <div class="search-container">
-            <input type="text" id="cityNameInput" placeholder="Search for a city...">
-            <button id="addCity">
-                <img id="glass" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' y1='5' x2='12' y2='19'%3E%3C/line%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E" alt="Add">
-            </button>
-        </div>
-
-        <a href="login.html">
-            <img id="userIcon" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'%3E%3C/path%3E%3Ccircle cx='12' cy='7' r='4'%3E%3C/circle%3E%3C/svg%3E" alt="User">
-        </a>
+      <a href="login.html">
+        <img
+          id="userIcon"
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'%3E%3C/path%3E%3Ccircle cx='12' cy='7' r='4'%3E%3C/circle%3E%3C/svg%3E"
+          alt="User"
+        />
+      </a>
     </header>
-  <div id="cityList"></div>
+    <div id="cityList"></div>
 
-  <script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
